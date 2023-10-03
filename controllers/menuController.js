@@ -1,5 +1,5 @@
 import Menu from "../models/menuModel.js";
-const qr = require('qr-image'); 
+import qr from 'qr-image'
 
 export const getAllMenus = async (req, res) => {
 
