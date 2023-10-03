@@ -1,5 +1,7 @@
 import Menu from "../models/menuModel.js";
-import qr from 'qr-image'
+import qr from 'qr-image';
+import fs from 'fs';
+import path from 'path';
 
 export const getAllMenus = async (req, res) => {
 
@@ -22,9 +24,16 @@ export const getAllMenus = async (req, res) => {
     try {
       const menuId = req.params.id;
       const qrCode = qr.image(`http://localhost:5000/menu/qr/${menuId}`, { type: 'png' });
-      res.type('png');
-      qrCode.pipe(res);
       
+      // Encode the image as base64
+      const imageBuffer = [];
+      qrCode.on('data', (chunk) => {
+        imageBuffer.push(chunk);
+      });
+      qrCode.on('end', () => {
+        const imageBase64 = Buffer.concat(imageBuffer).toString('base64');
+        res.send(imageBase64);
+      });
   } catch (error) {
       console.error(error);
       res.status(500).send(error);
