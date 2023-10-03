@@ -13,8 +13,8 @@ import {
 
 
 router.get('/', getAllProduct);
-router.post('/', adminAuth , createProduct);
-router.put('/:id', adminAuth , updatePrice);
+router.post('/', createProduct);
+router.put('/:id', updatePrice);
 
 
 

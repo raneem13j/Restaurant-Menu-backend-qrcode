@@ -11,11 +11,14 @@ export const getAllProduct = async (req, res) => {
 
 export const createProduct = async (req, res) => {
   try {
+    console.log("sdasfas")
+    console.log(req.body.categoryId)
     const newProduct = new Product({
       product: req.body.product,
       price: req.body.price,
       categoryId: req.body.categoryId,
     });
+   
     await newProduct.save();
     res.status(201).json(newProduct);
   } catch (error) {

@@ -3,7 +3,9 @@ const jwtSecret = "123456";
 
 // authenticate an admin
 export const adminAuth = (req, res, next) => {
+
   const token = req.cookies.jwt;
+  console.log(token)
   if (token) {
     jwt.verify(token, jwtSecret, (err, decodedToken) => {
       if (err) {

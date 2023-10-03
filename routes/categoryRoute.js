@@ -13,7 +13,7 @@ import {
 
 
 router.get('/', getAllCategories);
-router.post('/',adminAuth, createCategory);
+router.post('/', createCategory);
 
 
 export default router

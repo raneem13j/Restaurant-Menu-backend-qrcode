@@ -5,6 +5,8 @@ const router = express.Router();
 
 import {
     getAllMenus,
+    getQRcode,
+    getMenuById,
     createMenu,
   
     
@@ -12,7 +14,9 @@ import {
 
 
 router.get('/', getAllMenus);
-router.post('/', adminAuth, createMenu);
+router.get('/qr/:id', getQRcode);
+router.get('/:id',getMenuById);
+router.post('/',createMenu);
 
 
 
