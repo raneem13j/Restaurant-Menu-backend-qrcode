@@ -14,7 +14,7 @@ import {
 
 
 router.get('/', getAllMenus);
-router.get('/qr/:id', getQRcode);
+router.get('/qrCode/:id', getQRcode);
 router.get('/:id',getMenuById);
 router.post('/',createMenu);
 

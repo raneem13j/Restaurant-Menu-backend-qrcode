@@ -8,6 +8,10 @@ export const getAllMenus = async (req, res) => {
     try {
         const menus = await Menu.find()
         .populate({
+          path: "categories",
+          select: "category",
+        })
+        .populate({
           path: "products",
           select: "product price categoryId",
           populate: {
@@ -45,7 +49,10 @@ export const getAllMenus = async (req, res) => {
     try {
         const id = req.params.id;
         console.log(id);
-        const menu = await Menu.findById(id)   .populate({
+        const menu = await Menu.findById(id)  .populate({
+          path: "categories",
+          select: "category",
+        })  .populate({
           path: "products",
           select: "product price categoryId",
           populate: {
